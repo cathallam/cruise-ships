@@ -1,33 +1,29 @@
-
-//import constructor file
+// import constructor file
 const Ship = require('../src/Ship.js');
+const Port = require('../src/Port.js');
 
-//describing the Ship constructor:
+// describing the Ship constructor:
 describe('Ship', () => {
-    it('creates an object instance', () => {
-     expect(new Ship()).toBeInstanceOf(Object);
- });
+  it('creates an object instance', () => {
+    expect(new Ship()).toBeInstanceOf(Object);
+  });
 });
 
-//Starting Port constructor
+// Starting Port constructor
 describe('Port', () =>{
-    it('has a starting port', () => {
-        const ship = new Ship('Southampton');
-        expect(ship.port).toBe('Southampton');
-    });
+  it('has a starting port', () => {
+    const port = new Port('Southampton');
+    const ship = new Ship(port);
+    expect(ship.currentPort).toBe(port);
+  });
 });
 
-//Ship is set to sail from port
+// Ship is set to sail from port
 describe('Sail', () => {
-    it('setting sail', () => {
-        const ship = new Ship('Southampton');
-        //.sailMethod is created
-        ship.setSail();
-        expect(ship.startingPort).toBeFalsy();
-    });
-}
-)
-Ship.prototype.setSail = function() {
-   
-  };
-
+  it('setting sail', () => {
+    const port = new Port('Southampton');
+    const ship = new Ship(port);
+    ship.setSail();
+    expect(ship.currentPort).toBeFalsy();
+  });
+});
