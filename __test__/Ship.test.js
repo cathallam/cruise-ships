@@ -27,3 +27,14 @@ describe('Sail', () => {
     expect(ship.currentPort).toBeFalsy();
   });
 });
+
+// Ship new dock
+describe('Dock', () => {
+  it('can dock at a different port', () => {
+    const southampton = new Port('Southampton');
+    const ship = new Ship(southampton);
+    const rome = new Port('Rome');
+    ship.dock(rome);
+    expect(ship.currentPort).toEqual(rome);
+  });
+});

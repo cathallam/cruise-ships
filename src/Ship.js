@@ -8,8 +8,9 @@ Ship.prototype.setSail = function () {
 };
 
 // Dock at a different port.
-Ship.prototype.dock = function () {
-
+// Ship.prototype.dock = function () {
+Ship.prototype.dock = function dock(port) {
+  this.currentPort = port;
 };
 
 module.exports = Ship;
