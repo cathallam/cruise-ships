@@ -30,6 +30,7 @@ describe('Sail', () => {
     const ship = new Ship(itinerary);
     ship.setSail();
     expect(ship.currentPort).toBeFalsy();
+    expect(southampton.ships).not.toContain(ship);
   });
 });
 
@@ -44,6 +45,8 @@ describe('Dock', () => {
     ship.setSail();
     ship.dock();
     expect(ship.currentPort).toEqual(rome);
+    // port can keep capacity and store ships
+    expect(rome.ships).toContain(ship);
   });
 });
 
@@ -57,4 +60,11 @@ describe('Sail', () => {
     ship.dock();
     expect(() => ship.setSail()).toThrowError('End of itinerary reached');
   });
+});
+
+it('gets added to port on instantiation', () => {
+  const southampton = new Port('Southampton');
+  const itinerary = new Itinerary([southampton]);
+  const ship = new Ship(itinerary);
+  expect(southampton.ships).toContain(ship);
 });

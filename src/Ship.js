@@ -3,6 +3,7 @@ function Ship(itinerary) {
   this.itinerary = itinerary;
   this.currentPort = itinerary.ports[0];
   this.previousPort = null;
+  this.currentPort.addShip(this);
 }
 
 // Create a .setsail method
@@ -20,6 +21,8 @@ Ship.prototype.setSail = function setSail() {
   // to the one we just left and the current port to nothing, as we
   // are at sea
   this.previousPort = this.currentPort;
+  // this code is possibly no longer relevant but confirm - 
+  this.currentPort.removeShip(this);
   this.currentPort = null;
 };
 
@@ -31,6 +34,7 @@ Ship.prototype.dock = function dock() {
   // get the port the ship is docking at from the itinerary
   // Increment the previous port index to identify the new port in the itinerary
   this.currentPort = itinerary.ports[previousPortIndex + 1];
+  this.currentPort.addShip(this);
 };
 
 
