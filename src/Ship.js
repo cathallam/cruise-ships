@@ -21,7 +21,6 @@ Ship.prototype.setSail = function setSail() {
   // to the one we just left and the current port to nothing, as we
   // are at sea
   this.previousPort = this.currentPort;
-  // this code is possibly no longer relevant but confirm - 
   this.currentPort.removeShip(this);
   this.currentPort = null;
 };
